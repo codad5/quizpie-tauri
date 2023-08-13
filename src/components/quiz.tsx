@@ -13,6 +13,11 @@ export default function Quiz({ quest }: { quest: number }) {
     useEffect(() => {
         invoke<string>('get_question_api', {quest : quest - 1}).then((response) => setQuestion({...JSON.parse(response)}))
     })
+    const submitAnswer = (e) => {
+        e.preventDefault();
+        invoke<string>('get_question_api', {quest : currentQuestion?.next}).then((response) => setQuestion({...JSON.parse(response)}))
+    }
+
     return <>
         <div>
             <div>
@@ -27,7 +32,7 @@ export default function Quiz({ quest }: { quest: number }) {
                     }
                 </select>
             </div>
-            <button>Next</button>
+            <button onClick={submitAnswer}>Next</button>
         </div>
     </>
 }

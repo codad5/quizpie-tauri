@@ -4,6 +4,7 @@
 
 mod structs;
 mod response;
+mod helpers;
 
 use std::{fs::File, io::Read, env};
 use response::{GreetResponse, QuizInfoResponse, QuestionResponse};
