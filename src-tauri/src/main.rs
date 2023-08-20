@@ -8,7 +8,7 @@ mod invoke_handlers;
 
 use helpers::response::GreetResponse;
 
-use invoke_handlers::{get_quiz_info_api, get_question_api};
+use invoke_handlers::{get_quiz_info_api, get_question_api, check_answer};
 
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
@@ -26,7 +26,7 @@ fn greet(name: &str) -> String {
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet, get_quiz_info_api, get_question_api])
+        .invoke_handler(tauri::generate_handler![greet, get_quiz_info_api, get_question_api, check_answer])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

@@ -6,3 +6,12 @@ pub struct Question {
     pub answer: usize
 }
 
+
+
+impl Question {
+    pub fn validate_answer(&self, answer: usize) -> bool {
+        self.answer == answer
+    }
+}
+    
+

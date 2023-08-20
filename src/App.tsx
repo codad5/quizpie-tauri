@@ -55,7 +55,7 @@ function App() {
       </form> */}
 
       <p>{greetMsg}</p>
-      <p>{quizData?.count} this should work</p>
+      <h1>Quiz App</h1>
       <Quiz quest={quizData?.count ?? 0}/>
     </div>
   );
