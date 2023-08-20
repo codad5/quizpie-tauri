@@ -1,7 +1,3 @@
-# Tauri + React + Typescript
-
-This template should help get you started developing with Tauri, React and Typescript in Vite.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+# Quiz-pie
+A simple quiz desktop app built with Tauri , react and vite
+![image](https://github.com/codad5/quizpie-tauri/assets/66634814/ffe6a3e8-5349-484b-b7ec-d526f6dd4c2e)
