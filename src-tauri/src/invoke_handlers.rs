@@ -16,15 +16,18 @@ pub fn get_quiz_info_api() -> String {
 pub fn get_question_api(quest: usize) -> String {
     let mut data = Quiz::load(String::from("questions/test.json"));
     let binding = data.clone();
-    let next_question_index = helpers::get_next_question_position((quest - 1 )as i32, binding.count());
-    let question = binding.questions.get(next_question_index as usize).expect(format!("cant get question at {}", next_question_index).as_str());
-    let question = question.clone();
+    let next = helpers::get_next_question_position(quest as i32, data.count());
+    println!("next: {}", next);
+    println!("quest: {}", quest);
+    println!("data.count(): {}", data.count());
+    let question = binding.questions.get(helpers::format_position(next)).expect("Question not found");
     let question_response = QuestionResponse {
-        count : data.ready().count(),
-        current: quest as u32,
-        next:(quest+1) as u32,
-        question: question.question,
-        options:question.options
+        count: data.count(),
+        current: next,
+        next: next + 1,
+        question: question.question.clone(),
+        options: question.options.clone(),
     };
     serde_json::to_string(&question_response).expect("JSON serialization error")
+    // serde_json::to_string(&question_response).expect("JSON serialization error")
 }

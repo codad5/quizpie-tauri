@@ -1,11 +1,56 @@
 {
-    "file":"test",
-    "count" : 3,
+    "file": "test",
+    "count": 10,
     "questions": [
         {
-            "question":"Is rust a dyanmic programming language?",
-            "options":["true","false"],
-            "answer":0
+            "question": "Is Rust a dynamic programming language?",
+            "options": ["true", "false"],
+            "answer": 1
+        },
+        {
+            "question": "What does CPU stand for?",
+            "options": ["Central Processing Unit", "Computer Processing Unit", "Central Processor Unit"],
+            "answer": 0
+        },
+        {
+            "question": "Which planet is known as the 'Red Planet'?",
+            "options": ["Mars", "Venus", "Jupiter"],
+            "answer": 0
+        },
+        {
+            "question": "What is the chemical symbol for the element Oxygen?",
+            "options": ["O", "Ox", "O2"],
+            "answer": 0
+        },
+        {
+            "question": "Which famous scientist developed the theory of general relativity?",
+            "options": ["Isaac Newton", "Albert Einstein", "Stephen Hawking"],
+            "answer": 1
+        },
+        {
+            "question": "What is the largest mammal in the world?",
+            "options": ["African Elephant", "Blue Whale", "Giraffe"],
+            "answer": 1
+        },
+        {
+            "question": "Which country is known as the 'Land of the Rising Sun'?",
+            "options": ["China", "Japan", "South Korea"],
+            "answer": 1
+        },
+        {
+            "question": "Which gas do plants use for photosynthesis?",
+            "options": ["Oxygen", "Carbon Dioxide", "Nitrogen"],
+            "answer": 1
+        },
+        {
+            "question": "Who painted the Mona Lisa?",
+            "options": ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso"],
+            "answer": 0
+        },
+        {
+            "question": "What is the largest organ in the human body?",
+            "options": ["Heart", "Liver", "Skin"],
+            "answer": 2
         }
     ]
 }
