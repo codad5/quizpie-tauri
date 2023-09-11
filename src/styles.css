@@ -60,6 +60,7 @@ h1 {
 }
 
 input,
+select,
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -86,6 +87,7 @@ button:active {
 }
 
 input,
+select,
 button {
   outline: none;
 }
@@ -105,6 +107,7 @@ button {
   }
 
   input,
+  select,
   button {
     color: #ffffff;
     background-color: #0f0f0f98;

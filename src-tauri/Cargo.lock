@@ -1112,17 +1112,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "google-task"
-version = "0.0.0"
-dependencies = [
- "google-tasks1",
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
-]
-
-[[package]]
 name = "google-tasks1"
 version = "5.0.2+20230122"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2181,6 +2170,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "81b9228215d82c7b61490fec1de287136b5de6f5700f6e58ea9ad61a7964ca51"
 dependencies = [
  "memchr",
+]
+
+[[package]]
+name = "quiz-pie"
+version = "0.0.0"
+dependencies = [
+ "google-tasks1",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
 ]
 
 [[package]]

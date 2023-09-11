@@ -1,5 +1,5 @@
 import { invoke } from "@tauri-apps/api/tauri";
-import { useEffect, useState , useRef} from "react";
+import { SetStateAction, useEffect, useState, useRef } from "react";
 
 type Question = {
     count: number,
@@ -25,22 +25,28 @@ export default function Quiz({ quest }: { quest: number }) {
     const [currentQuestion, setQuestion] = useState<QuestionResponses>();
     const [correctAnswer, setAnswer] = useState<boolean>();
     const [restart, setRestart] = useState<boolean>(false);
-
+    const [quizOptions, setQuizOptions] = useState<string[]>(['test']);
+    const [quizOption, setQuizOption] = useState<String>('test');
+    const selectedOptionRef = useRef<HTMLSelectElement>(null);
     const [selectedOption, setSelectedOption] = useState<String|number>();
-
-  const handleOptionChange = (event) => {
+  const handleOptionChange = (event: { target: { value: SetStateAction<number | String | undefined>; }; }) => {
     setSelectedOption(event.target.value);
   };
 
 
     useEffect(() => {
         if (quest > 0) {
-            invoke<string>('get_question_api', { quest: quest }).then((response) => setQuestion({ ...JSON.parse(response) }))
+            invoke<string>('get_question_api', { quest: 0 , option: quizOption}).then((response) => setQuestion({ ...JSON.parse(response) }))
         }
-    }, [quest, restart]);
+    }, [quizOption, restart]);
+
+    useEffect(() => {
+        invoke<string>('get_all_quiz_option').then((response) => setQuizOptions(JSON.parse(response)))
+    }, []);
     const submitAnswer = (e : React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        invoke<string>('check_answer', { quest: currentQuestion?.current, answer : parseInt(selectedOption as string)}).then((response) => {
+        if (selectedOption === undefined || parseInt(selectedOption as string) < 0) return
+        invoke<string>('check_answer', { quest: currentQuestion?.current, answer : parseInt(selectedOption as string), option: quizOption}).then((response) => {
             let answerResponse: QuestionResponses = JSON.parse(response);
             console.log(answerResponse);
             if ((answerResponse as AnswerResponse)?.correct  === false) {
@@ -66,7 +72,13 @@ export default function Quiz({ quest }: { quest: number }) {
                     </h1>
                 </div>
                 <div className="restart-btn-cnt">
-                    <button onClick={() => setRestart(!restart)}>Restart</button>
+                    <select ref={selectedOptionRef} onChange={(e) => setQuizOption(e.target.value as String)}>
+                        {
+                            quizOptions.map((option, key) => (
+                                <option value={option} key={key} selected={option == 'test'}>{option}</option>
+                            ))
+                        }
+                    </select>
                 </div>
             </div>
             <div className="quiz-body">

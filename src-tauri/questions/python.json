@@ -1,0 +1,81 @@
+{
+    "file": "python",
+    "count": 15,
+    "questions": [
+        {
+            "question": "What is the output of the following code?\n\n```python\nx = 5\ny = 2\nprint(x % y)\n```",
+            "options": ["3", "2", "2.5", "0"],
+            "answer": 0
+        },
+        {
+            "question": "Which of the following is not a valid Python data type?",
+            "options": ["int", "float", "decimal", "char"],
+            "answer": 3
+        },
+        {
+            "question": "In Python, what is the purpose of the `elif` keyword?",
+            "options": ["It represents the end of a function.", "It is used to define a class.", "It is used for conditional branching after an `if` statement.", "It defines a loop in Python."],
+            "answer": 2
+        },
+        {
+            "question": "What does the `len()` function do in Python?",
+            "options": ["It calculates the logarithm of a number.", "It returns the length of a list, string, or other data structure.", "It converts a value to a lowercase string.", "It finds the maximum value in a list."],
+            "answer": 1
+        },
+        {
+            "question": "Which of the following statements is true about Python's `list` data type?",
+            "options": ["Lists are immutable.", "Lists can contain elements of different data types.", "Lists are always sorted.", "Lists can only contain integers."],
+            "answer": 1
+        },
+        {
+            "question": "What is the result of `3 * 'abc'` in Python?",
+            "options": ["'abcabcabc'", "'abc3'", "Error", "9"],
+            "answer": 0
+        },
+        {
+            "question": "Which module in Python is used for working with regular expressions?",
+            "options": ["regex", "re", "regexpy", "regexp"],
+            "answer": 1
+        },
+        {
+            "question": "What is the purpose of a Python `for` loop?",
+            "options": ["To create a function.", "To define a class.", "To iterate over a sequence (like a list) or other iterable objects.", "To perform arithmetic calculations."],
+            "answer": 2
+        },
+        {
+            "question": "In Python, what does the `__init__` method do in a class?",
+            "options": ["It initializes the class variables.", "It defines the class constructor.", "It is used for printing output.", "It is used to exit the program."],
+            "answer": 1
+        },
+        {
+            "question": "What is the output of the following code?\n\n```python\nx = [1, 2, 3]\nprint(x[1:2])\n```",
+            "options": ["[1]", "[2]", "[2, 3]", "Error"],
+            "answer": 0
+        },
+        {
+            "question": "Which keyword is used for defining a function in Python?",
+            "options": ["def", "function", "fun", "method"],
+            "answer": 0
+        },
+        {
+            "question": "What is the purpose of the `if __name__ == '__main__':` statement in a Python script?",
+            "options": ["It defines a class.", "It is used for unit testing.", "It ensures that the script is only executed if it is the main program.", "It is used to import modules."],
+            "answer": 2
+        },
+        {
+            "question": "Which Python library is commonly used for data manipulation and analysis?",
+            "options": ["matplotlib", "numpy", "pandas", "seaborn"],
+            "answer": 2
+        },
+        {
+            "question": "What is the purpose of the `try` and `except` blocks in Python?",
+            "options": ["To define a loop.", "To import external modules.", "To handle exceptions and errors.", "To create conditional statements."],
+            "answer": 2
+        },
+        {
+            "question": "What is the output of the following code?\n\n```python\nx = [1, 2, 3]\nfor i in x:\n    print(i)\n```",
+            "options": ["1 2 3", "1\n2\n3", "Error", "123"],
+            "answer": 1
+        }
+    ]
+}

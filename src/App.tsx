@@ -12,7 +12,9 @@ function App() {
   const [name, setName] = useState("");
   const [quizData, setQuizData] = useState<quizDataType>();
   useEffect(() => {
-    invoke<string>('get_quiz_info_api').then((response) => setQuizData({...JSON.parse(response), current:0}))
+    invoke<string>('get_quiz_info_api', {
+      option: 'test'
+    }).then((response) => setQuizData({...JSON.parse(response), current:0}))
   }, [])
 
   async function greet() {

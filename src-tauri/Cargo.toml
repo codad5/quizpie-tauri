@@ -1,7 +1,7 @@
 [package]
-name = "google-task"
+name = "quiz-pie"
 version = "0.0.0"
-description = "A Tauri App"
+description = "A Quiz App"
 authors = ["you"]
 license = ""
 repository = ""
