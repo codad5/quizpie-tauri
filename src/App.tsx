@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
 import Quiz from "./components/quiz";
@@ -53,9 +52,6 @@ function App() {
         />
         <button type="submit">Greet</button>
       </form> */}
-
-      <p>{greetMsg}</p>
-      <h1>Quiz App</h1>
       <Quiz quest={quizData?.count ?? 0}/>
     </div>
   );

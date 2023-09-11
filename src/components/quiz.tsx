@@ -25,7 +25,14 @@ export default function Quiz({ quest }: { quest: number }) {
     const [currentQuestion, setQuestion] = useState<QuestionResponses>();
     const [correctAnswer, setAnswer] = useState<boolean>();
     const [restart, setRestart] = useState<boolean>(false);
-    const selectRef = useRef<HTMLSelectElement>(null);
+
+    const [selectedOption, setSelectedOption] = useState<String|number>();
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+
     useEffect(() => {
         if (quest > 0) {
             invoke<string>('get_question_api', { quest: quest }).then((response) => setQuestion({ ...JSON.parse(response) }))
@@ -33,7 +40,7 @@ export default function Quiz({ quest }: { quest: number }) {
     }, [quest, restart]);
     const submitAnswer = (e : React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        invoke<string>('check_answer', { quest: currentQuestion?.current, answer : parseInt(selectRef.current?.value as string)}).then((response) => {
+        invoke<string>('check_answer', { quest: currentQuestion?.current, answer : parseInt(selectedOption as string)}).then((response) => {
             let answerResponse: QuestionResponses = JSON.parse(response);
             console.log(answerResponse);
             if ((answerResponse as AnswerResponse)?.correct  === false) {
@@ -41,34 +48,74 @@ export default function Quiz({ quest }: { quest: number }) {
             }
             else {
                 setAnswer(true);
+                setSelectedOption(-1);
                 setQuestion(answerResponse);
             }
         })
     }
 
     return <>
-        <div>
-            <button onClick={() => setRestart(!restart)}>Restart</button>
-            <br />
-            <hr />
-            <div>
-                Question No {(currentQuestion?.current ?? 0)}/{currentQuestion?.count}: 
+        <div className="w-full">
+            <div className="header ">
+                <div className="restart-btn-cnt">
+                    <button onClick={() => setRestart(!restart)}>Restart</button>
+                </div>
+                <div className="header-txt">
+                    <h1>
+                        Quiz Pie
+                    </h1>
+                </div>
+                <div className="restart-btn-cnt">
+                    <button onClick={() => setRestart(!restart)}>Restart</button>
+                </div>
+            </div>
+            <div className="quiz-body">
+                <div className="question-number">
+                    <span className="question-num-big">
+                        {(currentQuestion?.current ?? 0)}
+                    </span>
+                    /{currentQuestion?.count}: 
+                </div>
+                <div className="question-cnt">
+                    <span style={{
+                        fontWeight: 500
+                    }}>Question :</span>
+                    <div>{currentQuestion?.question}</div>
+                </div>
+                <div className="answer-body">
+                    <form>
+
+                        <div className="answer-cnt">
+                            <div className="option-group">
+                                {
+                                    currentQuestion?.options.map((option, key) => (
+                                        <label>
+                                            <div className="input-option">
+                                                <input
+                                                    type="radio"
+                                                    name="quizOption"
+                                                    value={key}
+                                                    checked={selectedOption == key}
+                                                    onChange={handleOptionChange}
+                                                />
+                                            </div>
+                                                <div className="option-text">
+                                                    {option}
+                                                </div>
+                                        </label>
+                                    ))
+                                }
+                            </div>
+                       <br />
+                        </div>
+                        <div className="submit-btn-cnt">
+                             <button onClick={submitAnswer}>Next</button>
+                        </div>
+                    </form>
+                </div>
+                {correctAnswer === false && <div>Wrong Answer</div>}
                 <br />
-                <h4>{currentQuestion?.question}</h4>
             </div>
-            <div>
-                <select ref={selectRef}>
-                    <option value={-1} selected disabled hidden>Choose here</option>
-                    {
-                        currentQuestion?.options.map((option, key) => (
-                            <option value={key} key={key}>{option}</option>
-                        ))
-                    }
-                </select>
-            </div>
-            <br />
-            <button onClick={submitAnswer}>Next</button>
-            {correctAnswer === false && <div>Wrong Answer</div>}
         </div>
     </>
 }
